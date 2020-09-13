@@ -7,6 +7,7 @@ const engine = Engine.create();
 const world = engine.world;
 
 //variables
+var bg = [247, 237, 226];
 var ground, stand;
 var rock;
 var slingshot;
@@ -64,7 +65,7 @@ function setup() {
 function draw() {
 
   //background
-  background(247, 237, 226); 
+  background(bg); 
 
   /*DISPLAY*/
 
@@ -96,11 +97,6 @@ function draw() {
   block13.display();
   block14.display();
   block15.display();
-/*
-  fill("black");
-  ellipseMode(CENTRE);
-  ellipse(rock.position.x, rock.position.y, rock.radius);
-*/
 }
 
 
@@ -116,7 +112,22 @@ function mouseReleased(){
 
 function keyPressed(){
 	if(keyCode === 32){
-		Matter.Body.setPosition(rock.body, {x: 160, y: 550});
+		Matter.Body.setPosition(rock.body, {x: 160, y: 300});
 		slingshot.attach(rock.body);
 	}
+}
+
+
+async function getBackgroundImage(){
+
+  var response = await fetch("http://worldtimeapi.org/api/timezone/America/Phoenix");
+  var responseJSON = await response.json();
+  var dateTime = responseJSON.datetime;
+  var hour = dateTime.slice(11, 13);
+
+  if(hour >= 06 && hour <= 19){
+      bg = [247, 237, 226];
+  }else{
+      bg = [0,0,0];
+  }
 }
