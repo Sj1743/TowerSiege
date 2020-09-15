@@ -9,19 +9,20 @@ class Box{
         this.width = 30;
         this.height = 30;
         this.colour = colour;
-        this.visiblity = 255;
+        this.Visiblity = 255;
+        this.touching = false;
         World.add(world, this.body);
       }
 
       display(){
-        //var fade = 255;
-        if(this.body.speed < 5){
-          var angle = this.body.angle;
+        
+        if(this.body.speed < 6){
+          
         push();
         translate(this.body.position.x, this.body.position.y);
-        rotate(angle);
-        var hue = this.colour;
+        rotate(this.body.angle);
         rectMode(CENTER);
+        var hue = this.colour;
         switch (hue) {
           case 0 :
             fill(246, 189, 96);
@@ -41,20 +42,22 @@ class Box{
         }
         rect(0, 0, this.width, this.height);
         pop();
-        }else{
+        }
+          else{
           World.remove(world, this.body);
           push();
-          this.visibility = this.visibility - 0.001;
+          rotate(this.body.angle);
+          translate(this.body.position.x, this.body.position.y);
+          this.Visiblity = this.Visiblity - 5;
+          fill(255,this.Visiblity);
+          //rect(0, 0, 30, 30);
           pop();
-          // World.remove(world, this.body);
-          // push();
-          // translate(this.body.position.x, this.body.position.y);
-          // rotate(this.body.angle);
-          // fade = fade - 50;
-          // tint(255, 10);
-          // rect(0, 0, 30, 30);
-          // pop();
-          // console.log(fade);
         }      
+      }
+
+      score(){
+        if (this.Visiblity < 0 && this.Visiblity > 100){
+          score++;
+        }
       }
 }

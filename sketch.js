@@ -7,6 +7,7 @@ const engine = Engine.create();
 const world = engine.world;
 
 //variables
+var score = 0;
 var bg = [247, 237, 226];
 var ground, stand;
 var rock;
@@ -67,6 +68,12 @@ function draw() {
   //background
   background(bg); 
 
+  //display scoring
+  noStroke();
+  textSize(25);
+  fill("orange");
+  text("Score : " + score, width-150, 50);
+
   /*DISPLAY*/
 
   //ground 
@@ -97,6 +104,24 @@ function draw() {
   block13.display();
   block14.display();
   block15.display();
+
+  //scoring
+  block01.score();
+  block02.score();
+  block03.score();
+  block04.score();
+  block05.score();
+  block06.score();
+  block07.score();
+  block08.score();
+  block09.score();
+  block10.score();
+  block11.score();
+  block12.score();
+  block13.score();
+  block14.score();
+  block15.score();
+
 }
 
 
