@@ -69,10 +69,12 @@ function draw() {
   background(bg); 
 
   //display scoring
+  push();
   noStroke();
   textSize(25);
   fill("orange");
   text("Score : " + score, width-150, 50);
+  pop();
 
   /*DISPLAY*/
 
