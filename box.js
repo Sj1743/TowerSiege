@@ -48,15 +48,15 @@ class Box{
           push();
           rotate(this.body.angle);
           translate(this.body.position.x, this.body.position.y);
-          this.Visiblity = this.Visiblity - 5;
-          fill(255,this.Visiblity);
+          this.Visiblity = this.Visiblity - 10;
+          tint(255,this.Visiblity);
           //rect(0, 0, 30, 30);
           pop();
         }      
       }
 
       score(){
-        if (this.Visiblity < 0 && this.Visiblity > 100){
+        if (this.Visiblity < 255 && this.Visiblity > -100){
           score++;
         }
       }
